@@ -1,6 +1,0 @@
-name: "CloudBlacklist"
-author: "ShrBox"
-version: "0.1.0"
-main: "top.mc114.cloudb.Main"
-info: "Core云黑名单"
-depends: []
