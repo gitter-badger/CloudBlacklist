@@ -17,7 +17,7 @@ public class Main extends PluginBase {
     public static Config config;
     public static List<Long> list;
     public void startLoad() {
-        String json = Parsing.getPageSource("https://shrbox.github.io/CoreBlack-list/list.json", "UTF-8");
+        String json = Parsing.getPageSource("https://mc114.top/list.json", "UTF-8");
         Get get = new Gson().fromJson(json, Get.class);
         //System.out.println(json);
         //System.out.println(get.black);

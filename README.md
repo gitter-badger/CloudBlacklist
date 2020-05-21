@@ -1,7 +1,13 @@
 # CloudBlacklist
-*本插件处于开发阶段*  
-*使用此插件将导致您的机器人加载变慢*  
-This is a Cloud black list plugin for mirai  
-这是一个使用mirai开发的云黑名单插件  
+
+*本插件处于beta阶段*  
+这是一个使用mirai api开发的云黑名单插件  
+
 ## 安装
+
 [Release](https://github.com/ShrBox/CloudBlacklist/releases)
+
+## 命令
+
+`/cbreload`：重载云黑列表  
+`qb+QQ`（仅群内）：查询云黑内是否包含目标QQ
