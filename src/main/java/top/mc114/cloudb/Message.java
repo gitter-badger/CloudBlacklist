@@ -12,21 +12,20 @@ public class Message implements Consumer<GroupMessageEvent> {
     @Override
     public void accept(GroupMessageEvent event) {
         List<Long> list = Main.list;
-        if(event.getGroup().getBotPermission().getLevel()==0||event.getSender().getPermission().getLevel()>0) {
-            return;
-        }
-        Long senderid = event.getSender().getId();
-        if(list.contains(senderid)) {
-            event.getBot().recall(event.getMessage());
-            event.getSender().mute(114514);
-            event.getGroup().sendMessage(MessageUtils.newChain("云黑名单列表中包含")
-                    .plus(new At(event.getSender()))
-                    .plus("["+senderid+"]，已将其处理，原因：https://github.com/ShrBox/CoreBlack-list/blob/master/reasons/"+senderid+".md"));
-            return;
+        if(event.getGroup().getBotPermission().getLevel()>0||event.getSender().getPermission().getLevel()==0) {
+            Long senderid = event.getSender().getId();
+            if(list.contains(senderid)) {
+                event.getBot().recall(event.getMessage());
+                event.getSender().mute(114514);
+                event.getGroup().sendMessage(MessageUtils.newChain("云黑名单列表中包含")
+                        .plus(new At(event.getSender()))
+                        .plus("["+senderid+"]，已将其处理，原因：https://github.com/ShrBox/CoreBlack-list/blob/master/reasons/"+senderid+".md"));
+                return;
+            }
         }
         String message = event.getMessage().contentToString();
-        if(message.contains("/qb")) {
-            String account = message.replace("/qb", "").trim();
+        if(message.contains("!qb")) {
+            String account = message.replace("!qb", "").trim();
             if (!StringUtil.isNumeric(account)) {
                 event.getGroup().sendMessage(MessageUtils.newChain(new At(event.getSender()))
                         .plus("Core云黑名单目前只支持查询QQ号"));
